@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   
 
@@ -42,10 +43,10 @@
 
 <body>
 
-  
+
   <div class="wrapper page-option-v1">
     <div class="hidden-print">
-  <nav class="navbar navbar-light hidden-print" style="background-color: black; min-height: 80px;">
+  <nav id="header-navbar" class="navbar navbar-light hidden-print" style="background-color: black;">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -202,53 +203,12 @@
 </div>
 
 
-    <div>
-      
-
-
-  <nav class="breadcrumbs hidden-print">
-    <div class="container">
-      <h1 class="pull-left">API Lifecycle & Deprecation Policy</h1>
-
-      <ol class="pull-right breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
-
-        
-        
-
-        <li class="active" property="itemListElement" typeof="ListItem">
-          <a property="item" typeof="WebPage" href="/">
-            <span property="name">Home</span>
-          </a>
-          <meta property="position" content="1" />
-        </li>
-
-        
-        
-
-          
-          
-            
-
-          
-          
-
-          
-          
-
-          
-          
-
-        
-
-      </ol>
-    </div>
-  </nav>
-
-
-
-<div class="container content">
+    <div id="main-content"
+         class="main-content">
+      <div class="container-fluid content">
   <div class="row">
-    <div class="col-md-3 left-navigation">
+    <div id="left-navigation"
+         class="col-md-2 left-navigation">
       
 
 
@@ -296,30 +256,51 @@
     <!--/col-md-3-->
 
     
-      <div class="col-md-8 markdown-body">
+      <div id="markdown-body"
+           class="col-md-8 markdown-body">
         
 
         <h1 id="api-lifecycle--deprecation-policy">API Lifecycle &amp; Deprecation Policy</h1>
 
-<p>The Concur API Lifecycle &amp; Deprecation Policy is part of our <a href="/Terms-of-Use.html">API terms and conditions of use.</a> We may make periodic updates to this Policy, at which time we will notify those who have agreements with us.</p>
+<p>The API Lifecycle &amp; Deprecation Policy is part of our <a href="/Terms-of-Use.html">API terms and conditions of use.</a> We may make periodic updates to this policy, at which time we will notify those who have agreements with us.</p>
+
+<blockquote>
+  <p><strong>NOTE</strong>: For the policy that applies to APIs deprecated prior to August 2021, see: https://developer.concur.com/tools-support/deprecation-policy-legacy.html.</p>
+</blockquote>
 
 <h2 id="api-version-status">API Version Status</h2>
 
 <ul>
-  <li><strong>Active:</strong> An active API version is the most current and fully supported API. It is the recommended version to use by everyone.</li>
-  <li><strong>Deprecated:</strong> A deprecated API version has been superseded by a newer API version. It is supported (bug fixes) for six months from the deprecation date. New apps will be denied access to deprecated APIs.</li>
-  <li><strong>Retired:</strong> A retired API version is no longer supported. It includes any API deprecated for more than six months. Any application using a retired API must migrate to an active API.</li>
-  <li><strong>Decommissioned:</strong> A decommissioned API version is no longer available on production. This occurs after three (3) months of inactivity in Retired state.</li>
+  <li><strong>Active:</strong> An active API version is the most current and fully supported API. It is the recommended version for everyone to use.</li>
+  <li><strong>Deprecated:</strong> A deprecated API version has been superseded by a newer API version.  New apps will be denied access to deprecated APIs.</li>
+  <li><strong>Decommissioned:</strong> A decommissioned API version is no longer available on production.</li>
 </ul>
 
-<h3 id="api-version-status-table">API Version Status Table</h3>
+<h2 id="api-lifespan-and-state-change">API Lifespan and State Change</h2>
+
+<ul>
+  <li><strong>Minimum Lifespan:</strong> We will provide a minimum lifespan for APIs of 24 months in the active or deprecated status before announcing a decommissioned state.</li>
+  <li><strong>Deprecated -&gt; Decommissioned:</strong> Once an API transitions from an active to deprecated status, we will maintain the API in the deprecated state for a minimum of 12 months before transitioning the API to decommissioned state.</li>
+  <li><strong>Decommissioned:</strong> Decommissioned APIs are no longer supported and any and all documentation may be deleted at our discretion.</li>
+  <li><strong>Exceptions:</strong> There may be exceptions where we are not able to satisfy the foregoing minimum lifespan or minimum deprecated state duration. This is including but not limited to:
+    <ul>
+      <li>Where required by law or regulatory authority.</li>
+      <li>Where required by a third party licensor.</li>
+      <li>To address a security risk.</li>
+      <li>To address a claim by a third party of intellectual property infringement.</li>
+      <li>Where the associated SAP Concur product has entered end of life.</li>
+      <li>Where the API or the associated application have no adoption and are therefore being deleted.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="api-version-status-table">API Version Status Table</h2>
 
 <table>
   <thead>
     <tr>
       <th>Active</th>
       <th>Deprecated</th>
-      <th>Retired</th>
       <th>Decommissioned</th>
     </tr>
   </thead>
@@ -327,40 +308,35 @@
     <tr>
       <td><strong>API is live in production.</strong></td>
       <td><strong>API is live in production.</strong></td>
-      <td>API is live in production.</td>
-      <td>API is NOT available in production after three (3) months of inactivity in Retired status.</td>
+      <td>API is no longer available in production.</td>
     </tr>
     <tr>
-      <td><strong>Documentation*:</strong> Available for review 2 weeks prior to launch; Posted day of launch.</td>
+      <td><strong>Documentation:</strong> Available for review two weeks prior to launch. Posted on day of launch.</td>
       <td><strong>Documentation:</strong> Deprecated status indicated and posted on day of deprecation.</td>
-      <td><strong>Documentation:</strong> Retired status indicated and posted on day of retirement.</td>
-      <td><strong>Documentation:</strong> n/a</td>
+      <td><strong>Documentation:</strong> N/A</td>
     </tr>
     <tr>
       <td><strong>Support:</strong> Updated with bug fixes and new features are available.</td>
-      <td><strong>Support:</strong> Updated with bug fixes for first six (6) months; No fixes after that period.</td>
-      <td><strong>Support:</strong> No longer supported six (6) months after Deprecated.</td>
+      <td><strong>Support:</strong> Updated with bug fixes for a minimum of 12 months.</td>
       <td><strong>Support:</strong> None.</td>
     </tr>
     <tr>
-      <td><strong>Release Notes:</strong> Notify 2 weeks prior to launch; Announce availability when in production.</td>
-      <td><strong>Release Notes:</strong> Notify 90 days prior to deprecation; Announce when deprecated.</td>
-      <td><strong>Release Notes:</strong> Notify 90 days prior to retirement; Announce when retired.</td>
-      <td><strong>Release Notes:</strong> Notify 90 days prior to decommissioning.</td>
+      <td><strong>Release Notes:</strong> Notify two weeks prior to launch. Announce availability when in production.</td>
+      <td><strong>Release Notes:</strong> Notify 30 days prior to deprecation. Announce when deprecated. Time period is at least 12 months in this status.</td>
+      <td><strong>Release Notes:</strong> Notify 30 days prior to decommissioning.</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="exception-changes-required-due-to-security-issues-may-have-a-shorter-notification-and-action-window">*Exception: Changes required due to security issues may have a shorter notification and action window.</h2>
-
       </div>
       <!--/col-md-8-->
       
-      <div class="col-md-1 markdown-toc">
-        <div class="markdown-toc-header col-md-4">
+      <div id="markdown-toc"
+           class="col-md-2 markdown-toc">
+        <div class="markdown-toc-header">
     <h4>On this page</h4>
-    <div class="markdown-toc-content">
-    </div>
+</div>
+<div class="markdown-toc-content">
 </div>
 
       </div>
@@ -381,7 +357,7 @@
     // Where to grab the headings to build the table of contents.
     contentSelector: '.markdown-body',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h2, h3',
+    headingSelector: 'h1, h2',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: false,
   });
@@ -390,105 +366,73 @@
 
     </div>
 
-    <footer class="hidden-print">
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 company-description">
-          <p>
-            SAP Concur is a leading provider of integrated travel and expense management solutions.
-            <a href="https://www.concur.com/en-us/about-concur">More <i class="fas fa-angle-right"></i></a>
-          </p>
-        </div>
-        <div class="col-md-3">
-          <h2 class="headline">About SAP Concur</h2>
-          <ul class="list-unstyled link-list">
-            <li><a href="https://www.concur.com/en-us/media-resources/press-releases">Press Releases</a><i class="fas fa-angle-right"></i></li>
-            <li><a href="https://www.concur.com/en-us/about/news">In the News</a><i class="fas fa-angle-right"></i></li>
-            <li><a href="https://www.concur.com/en-us/events">Events</a><i class="fas fa-angle-right"></i></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h2 class="headline">Contact</h2>
-          <address>
-            601 108th Ave NE, Suite 1000 <br />
-            Bellevue, WA 98004 USA <br />
-            Phone: +1 425 590 5000 <br />
-            Fax: +1 425 590 5999
-          </address>
-        </div>
-      </div>
+    <footer class="hidden-print"
+        id="footer">
+  <div class="col-md-8 footer-copyright">
+    <p>
+      &copy;
+      <script type="text/javascript">
+        document.write(new Date().getFullYear());
+      </script>
+      All Rights Reserved.
+      <a href="https://www.concur.com/en-us/privacy-policy">Privacy Policy</a> |
+      <a href="/terms-of-use-2021.html">Terms of Use</a> |
+      <a href="/tools-support/deprecation-policy.html">API Deprecation Policy</a> |
+      <a href="https://github.com/concur/preview.developer.concur.com/blob/preview/src/tools-support/deprecation-policy.markdown">Edit this page on GitHub</a>
+    </p>
+  </div>
 
-      <div class="row footer-github">
-        <div class="col-md-12 text-center">
-          <a href="https://github.com/concur/preview.developer.concur.com/blob/preview/src/tools-support/deprecation-policy.markdown"><i class="fab fa-github fa-2x"></i> Edit this page on GitHub</a>
-          <span>|</span>
-          <a href="https://github.com/concur/developer.concur.com/commit/0">Produced from 0</a>
-        </div>
-      </div>
-
-      <div class="row footer-copyright">
-        <div class="col-md-8">
-          <p>
-            &copy;
-            <script type="text/javascript">
-              document.write(new Date().getFullYear());
-            </script>
-            All Rights Reserved.
-            <a href="https://www.concur.com/en-us/privacy-policy">Privacy Policy</a> |
-            <a href="/terms-of-use-2021.html">Terms of Use</a> |
-            <a href="/tools-support/deprecation-policy.html">API Deprecation Policy</a>
-          </p>
-        </div>
-
-        <!-- Social Links -->
-        <div class="col-md-4">
-          <ul class="list-inline social-icons">
-            <li>
-              <a href="https://www.facebook.com/SAPConcur" target="_blank">
-                <span class="sr-only">Facebook</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/company/5822" target="_blank">
-                <span class="sr-only">LinkedIn</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/sapconcur" target="_blank">
-                <span class="sr-only">Twitter</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/playlist?list=PLLNSVdjqNPVseaDkR5hSF4CDjnlLK7_nq" target="_blank">
-                <span class="sr-only">Youtube</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- End Social Links -->
-      </div> <!--/.footer-copyright-->
-    </div> <!--/.container-->
-  </div> <!--/.footer-->
+  <!-- Social Links -->
+  <div class="col-md-4 footer-social">
+    <ul class="list-inline social-icons">
+      <li>
+        <a href="https://www.facebook.com/SAPConcur"
+           target="_blank">
+          <span class="sr-only">Facebook</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/5822"
+           target="_blank">
+          <span class="sr-only">LinkedIn</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/sapconcur"
+           target="_blank">
+          <span class="sr-only">Twitter</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/playlist?list=PLLNSVdjqNPVseaDkR5hSF4CDjnlLK7_nq"
+           target="_blank">
+          <span class="sr-only">Youtube</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Social Links -->
 </footer>
+<!--/.footer-->
 
-  </div><!--/wrapper-->
+  </div>
+  <!--/wrapper-->
 
   <!-- JS Global Compulsory -->
 <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
@@ -505,7 +449,7 @@
 
 
 <script>
-  var replacementURL = "developer.concur.com/api-explorer-proxy";
+  var replacementURL = "preview.developer.concur.com/api-explorer-proxy";
 </script>
 
 
@@ -520,6 +464,50 @@
   });
 </script>
 
+<script>
+  var oHeader = document.getElementById("header-navbar");
+  var oContent = document.getElementById("main-content");
+  var oFooter = document.getElementById("footer");
+
+  // Set content overall height
+  var iNewHeight = oContent.offsetHeight - (oHeader.offsetHeight + oFooter.offsetHeight);
+  var sHeight = "" + iNewHeight + "px";
+  oContent.style.height = sHeight;
+
+  // Set Triple component heights.
+  // var oBreadcrumb = document.getElementById("breadcrumbs");
+  var oLeftNav = document.getElementById("left-navigation");
+  var oMDContent = document.getElementById("markdown-body");
+  var oMDToc = document.getElementById("markdown-toc");
+
+  // Widths are 2-8-2 or 2-10 if no MDToc
+  var sWidth;
+  if (!!oLeftNav) {
+    oLeftNav.style.height = sHeight;
+    sWidth = "" + (window.innerWidth * 0.166) + "px";
+    oLeftNav.style.maxWidth = sWidth;
+  }
+  if (!!oMDContent) {
+    oMDContent.style.height = sHeight;
+    if (!!oMDToc) {
+      // 8 / 12
+      sWidth = "" + (window.innerWidth *0.66) + "px";
+      oMDContent.style.maxWidth = sWidth;
+    } else {
+      // 10 / 12
+      oMDContent.style.maxWidth = window.innerWidth * 0.833;
+      sWidth = "" + (window.innerWidth * 0.833) + "px";
+      oMDContent.style.maxWidth = sWidth;
+    }
+  }
+  if (!!oMDToc) {
+    oMDToc.style.height = sHeight;
+    sWidth = "" + (window.innerWidth * 0.166) + "px";
+    oMDToc.style.maxWidth = sWidth;
+  }
+</script>
+
 
 </body>
+
 </html>

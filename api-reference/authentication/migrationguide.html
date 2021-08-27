@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   
 
 
-  <title> SAP Concur Developer Center | Migrating old tokens to new Oauth2 Bearer Tokens</title>
+  <title> SAP Concur Developer Center | Migrating old tokens to new OAuth2 Bearer Tokens</title>
 
 
 <!-- Meta -->
@@ -42,10 +43,10 @@
 
 <body>
 
-  
+
   <div class="wrapper page-option-v1">
     <div class="hidden-print">
-  <nav class="navbar navbar-light hidden-print" style="background-color: black; min-height: 80px;">
+  <nav id="header-navbar" class="navbar navbar-light hidden-print" style="background-color: black;">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -202,71 +203,12 @@
 </div>
 
 
-    <div>
-      
-
-
-  <nav class="breadcrumbs hidden-print">
-    <div class="container">
-      <h1 class="pull-left">Migrating old tokens to new Oauth2 Bearer Tokens</h1>
-
-      <ol class="pull-right breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
-
-        
-        
-
-        <li class="active" property="itemListElement" typeof="ListItem">
-          <a property="item" typeof="WebPage" href="/">
-            <span property="name">Home</span>
-          </a>
-          <meta property="position" content="1" />
-        </li>
-
-        
-        
-
-          
-          
-            
-
-          
-          
-
-          
-          
-
-          
-          
-            <li class="active" property="itemListElement" typeof="ListItem">
-              <a property="item" typeof="WebPage" href="/api-reference/">
-                <span property="name">Introduction</span>
-              </a>
-              <meta property="position" content="2" />
-            </li>
-          
-
-        
-
-          
-          
-
-          
-          
-
-          
-          
-
-        
-
-      </ol>
-    </div>
-  </nav>
-
-
-
-<div class="container content">
+    <div id="main-content"
+         class="main-content">
+      <div class="container-fluid content">
   <div class="row">
-    <div class="col-md-3 left-navigation">
+    <div id="left-navigation"
+         class="col-md-2 left-navigation">
       
 
 
@@ -1004,19 +946,23 @@
           </li>
         
           <li >
-            <a href="/api-reference/travel/itinerary/itinerary.html">Itinerary API – Overview & Getting Started</a>
+            <a href="/api-reference/travel/itinerary/itinerary.html">Itinerary v1 – Getting Started</a>
           </li>
         
           <li >
-            <a href="/api-reference/travel/itinerary-tmc-thirdparty/index.html">Itinerary API Usage</a>
+            <a href="/api-reference/travel/itinerary-tmc-thirdparty/index.html">Itinerary v1 Usage</a>
           </li>
         
           <li >
-            <a href="/api-reference/travel/itinerary/trip/trip-resource.html">Trip Endpoint</a>
+            <a href="/api-reference/travel/itinerary/trip/trip-resource.html">Trip v1.1</a>
           </li>
         
           <li >
-            <a href="/api-reference/travel/itinerary/booking/booking-resource.html">Booking Endpoint</a>
+            <a href="/api-reference/travel/itinerary/booking/booking-resource.html">Booking v1.1</a>
+          </li>
+        
+          <li >
+            <a href="/api-reference/travel/itinerary-v4/v4.itinerary.html">Itinerary v4</a>
           </li>
         
       </ul>
@@ -1098,16 +1044,19 @@
     <!--/col-md-3-->
 
     
-      <div class="col-md-8 markdown-body">
+      <div id="markdown-body"
+           class="col-md-8 markdown-body">
         
 
-        <ul>
+        <h1 id="migrating-to-oauth2-tokens">Migrating to OAuth2 Tokens</h1>
+
+<ul>
   <li><a href="#base_uris">Base URIs</a></li>
   <li><a href="#exchangetoken">Exchanging a Token</a></li>
   <li><a href="#response_codes">Response Codes</a></li>
 </ul>
 
-<p>Existing applications that use the <a href="/api-reference/authentication/authorization-pre-2017.html">Pre-2017 Authorization (Deprecated)</a> framework need to move to support the new Oauth2 Bearer Tokens. Applications will need to migrate their existing users who already have connected to it to obtain new Oauth2 tokens without requiring users to reauthorize. This can be done by exchanging an old access token for a new refresh token.</p>
+<p>Existing applications that use the <a href="/api-reference/authentication/authorization-pre-2017.html">Pre-2017 Authorization (Deprecated)</a> framework need to move to support the new OAuth2 Bearer Tokens. Applications will need to migrate their existing users who already have connected to it to obtain new Oauth2 tokens without requiring users to reauthorize. This can be done by exchanging an old access token for a new refresh token.</p>
 
 <h2 id="base-uris-">Base URIs <a name="base_uris"></a></h2>
 
@@ -1115,14 +1064,14 @@
 
 <h2 id="exchanging-a-token-">Exchanging a Token <a name="exchangetoken"></a></h2>
 
-<p>In order to support new Oauth2, applications need to exchange old access token for new <code class="language-plaintext highlighter-rouge">accessToken</code> and <code class="language-plaintext highlighter-rouge">refreshToken</code> pair. Once obtained, applications should store these <code class="language-plaintext highlighter-rouge">refreshTokens</code> as part of users authorization data.</p>
+<p>In order to support new OAuth2, applications need to exchange old access token for new <code class="language-plaintext highlighter-rouge">accessToken</code> and <code class="language-plaintext highlighter-rouge">refreshToken</code> pair. Once obtained, applications should store these <code class="language-plaintext highlighter-rouge">refreshTokens</code> as part of users authorization data.</p>
 
-<p>The new Oauth2 <code class="language-plaintext highlighter-rouge">accessToken</code> has a one hour lifetime. Once expired, applications would need to call Oauth2’s <code class="language-plaintext highlighter-rouge">/v0/token</code> endpoint using a <code class="language-plaintext highlighter-rouge">refresh_grant</code>, passing in the user’s <code class="language-plaintext highlighter-rouge">refreshtoken</code> to obtain a fresh <code class="language-plaintext highlighter-rouge">accessToken</code>.</p>
+<p>The new OAuth2 <code class="language-plaintext highlighter-rouge">accessToken</code> has a one hour lifetime. Once expired, applications would need to call OAuth2’s <code class="language-plaintext highlighter-rouge">/v0/token</code> endpoint using a <code class="language-plaintext highlighter-rouge">refresh_grant</code>, passing in the user’s <code class="language-plaintext highlighter-rouge">refreshtoken</code> to obtain a fresh <code class="language-plaintext highlighter-rouge">accessToken</code>.</p>
 
-<p>This is significantly different from how the deprecated /net2/Oauth2’s method of handling access tokens. Partner’s would have to store the new Oauth2 <code class="language-plaintext highlighter-rouge">refreshToken</code> instead of the old access token. Before making a call to any of the new v4 APIs, it is advisable to request for a new <code class="language-plaintext highlighter-rouge">accessToken</code> before making the API call.</p>
+<p>This is significantly different from how the deprecated /net2/OAuth2’s method of handling access tokens. Partner’s would have to store the new OAuth2 <code class="language-plaintext highlighter-rouge">refreshToken</code> instead of the old access token. Before making a call to any of the new v4 APIs, it is advisable to request for a new <code class="language-plaintext highlighter-rouge">accessToken</code> before making the API call.</p>
 
 <p><strong>Step 1: Obtain Application Token</strong>
-Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class="language-plaintext highlighter-rouge">exchangeRefreshToken/me</code> endpoint. In order to call this endpoint, you would first need to obtain an Application Token by calling the <code class="language-plaintext highlighter-rouge">/v0/token</code> endpoint with the <a href="https://developer.concur.com/api-reference/authentication/apidoc.html#client_credentials">client_credentials</a> grant.</p>
+Clients can exchange OLD tokens for NEW OAuth2 tokens by calling the <code class="language-plaintext highlighter-rouge">exchangeRefreshToken/me</code> endpoint. In order to call this endpoint, you would first need to obtain an Application Token by calling the <code class="language-plaintext highlighter-rouge">/v0/token</code> endpoint with the <a href="https://developer.concur.com/api-reference/authentication/apidoc.html#client_credentials">client_credentials</a> grant.</p>
 
 <p>The endpoint also supports a parameter called “returnType=companyToken”  This parameter allows a partner who already has what is known as a “WSAdmin” token for a client, to exchange that token for a Company level refresh token.</p>
 
@@ -1228,7 +1177,7 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
 
 <p><strong>Step 3: Obtain New Access Token</strong></p>
 
-<p>Once you have the NEW <code class="language-plaintext highlighter-rouge">refreshToken</code> from the response (<code class="language-plaintext highlighter-rouge">8c844478-745c-4c45-adf7-1e2777a50dbf</code>) you can then proceed to call <code class="language-plaintext highlighter-rouge">/v0/token</code> using the refresh grant to obtain a NEW Oauth2 <code class="language-plaintext highlighter-rouge">accessToken</code>.</p>
+<p>Once you have the NEW <code class="language-plaintext highlighter-rouge">refreshToken</code> from the response (<code class="language-plaintext highlighter-rouge">8c844478-745c-4c45-adf7-1e2777a50dbf</code>) you can then proceed to call <code class="language-plaintext highlighter-rouge">/v0/token</code> using the refresh grant to obtain a NEW OAuth2 <code class="language-plaintext highlighter-rouge">accessToken</code>.</p>
 
 <p>Sample Curl:</p>
 
@@ -1316,7 +1265,7 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
   </tbody>
 </table>
 
-<h5 id="http-status-returned-by-oauth2">HTTP Status returned by oauth2</h5>
+<h5 id="http-status-returned-by-oauth2">HTTP Status returned by OAuth2</h5>
 
 <table>
   <thead>
@@ -1416,6 +1365,11 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
       <td>19</td>
       <td><code class="language-plaintext highlighter-rouge">invalid_grant</code></td>
       <td>Incorrect credentials. Please Retry</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td><code class="language-plaintext highlighter-rouge">invalid_grant</code></td>
+      <td>Logon Denied. Please contact support (typically due to IP restriction)</td>
     </tr>
     <tr>
       <td>51</td>
@@ -1592,18 +1546,38 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
       <td><code class="language-plaintext highlighter-rouge">invalid_request</code></td>
       <td>prompt must be set to consent for <code class="language-plaintext highlighter-rouge">offline_access</code></td>
     </tr>
+    <tr>
+      <td>120</td>
+      <td><code class="language-plaintext highlighter-rouge">invalid_request</code></td>
+      <td><code class="language-plaintext highlighter-rouge">credtype</code> is invalid</td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td><code class="language-plaintext highlighter-rouge">invalid_request</code></td>
+      <td><code class="language-plaintext highlighter-rouge">login_type</code> is invalid</td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td><code class="language-plaintext highlighter-rouge">invalid_request</code></td>
+      <td>proxies supplied are invalid</td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td><code class="language-plaintext highlighter-rouge">invalid_request</code></td>
+      <td>principal is disabled</td>
+    </tr>
   </tbody>
 </table>
-
 
       </div>
       <!--/col-md-8-->
       
-      <div class="col-md-1 markdown-toc">
-        <div class="markdown-toc-header col-md-4">
+      <div id="markdown-toc"
+           class="col-md-2 markdown-toc">
+        <div class="markdown-toc-header">
     <h4>On this page</h4>
-    <div class="markdown-toc-content">
-    </div>
+</div>
+<div class="markdown-toc-content">
 </div>
 
       </div>
@@ -1624,7 +1598,7 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
     // Where to grab the headings to build the table of contents.
     contentSelector: '.markdown-body',
     // Which headings to grab inside of the contentSelector element.
-    headingSelector: 'h2, h3',
+    headingSelector: 'h1, h2',
     // For headings inside relative or absolute positioned containers within content.
     hasInnerContainers: false,
   });
@@ -1633,105 +1607,73 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
 
     </div>
 
-    <footer class="hidden-print">
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 company-description">
-          <p>
-            SAP Concur is a leading provider of integrated travel and expense management solutions.
-            <a href="https://www.concur.com/en-us/about-concur">More <i class="fas fa-angle-right"></i></a>
-          </p>
-        </div>
-        <div class="col-md-3">
-          <h2 class="headline">About SAP Concur</h2>
-          <ul class="list-unstyled link-list">
-            <li><a href="https://www.concur.com/en-us/media-resources/press-releases">Press Releases</a><i class="fas fa-angle-right"></i></li>
-            <li><a href="https://www.concur.com/en-us/about/news">In the News</a><i class="fas fa-angle-right"></i></li>
-            <li><a href="https://www.concur.com/en-us/events">Events</a><i class="fas fa-angle-right"></i></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h2 class="headline">Contact</h2>
-          <address>
-            601 108th Ave NE, Suite 1000 <br />
-            Bellevue, WA 98004 USA <br />
-            Phone: +1 425 590 5000 <br />
-            Fax: +1 425 590 5999
-          </address>
-        </div>
-      </div>
+    <footer class="hidden-print"
+        id="footer">
+  <div class="col-md-8 footer-copyright">
+    <p>
+      &copy;
+      <script type="text/javascript">
+        document.write(new Date().getFullYear());
+      </script>
+      All Rights Reserved.
+      <a href="https://www.concur.com/en-us/privacy-policy">Privacy Policy</a> |
+      <a href="/terms-of-use-2021.html">Terms of Use</a> |
+      <a href="/tools-support/deprecation-policy.html">API Deprecation Policy</a> |
+      <a href="https://github.com/concur/preview.developer.concur.com/blob/preview/src/api-reference/authentication/migrationguide.markdown">Edit this page on GitHub</a>
+    </p>
+  </div>
 
-      <div class="row footer-github">
-        <div class="col-md-12 text-center">
-          <a href="https://github.com/concur/preview.developer.concur.com/blob/preview/src/api-reference/authentication/migrationguide.markdown"><i class="fab fa-github fa-2x"></i> Edit this page on GitHub</a>
-          <span>|</span>
-          <a href="https://github.com/concur/developer.concur.com/commit/0">Produced from 0</a>
-        </div>
-      </div>
-
-      <div class="row footer-copyright">
-        <div class="col-md-8">
-          <p>
-            &copy;
-            <script type="text/javascript">
-              document.write(new Date().getFullYear());
-            </script>
-            All Rights Reserved.
-            <a href="https://www.concur.com/en-us/privacy-policy">Privacy Policy</a> |
-            <a href="/terms-of-use-2021.html">Terms of Use</a> |
-            <a href="/tools-support/deprecation-policy.html">API Deprecation Policy</a>
-          </p>
-        </div>
-
-        <!-- Social Links -->
-        <div class="col-md-4">
-          <ul class="list-inline social-icons">
-            <li>
-              <a href="https://www.facebook.com/SAPConcur" target="_blank">
-                <span class="sr-only">Facebook</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/company/5822" target="_blank">
-                <span class="sr-only">LinkedIn</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/sapconcur" target="_blank">
-                <span class="sr-only">Twitter</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/playlist?list=PLLNSVdjqNPVseaDkR5hSF4CDjnlLK7_nq" target="_blank">
-                <span class="sr-only">Youtube</span>
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- End Social Links -->
-      </div> <!--/.footer-copyright-->
-    </div> <!--/.container-->
-  </div> <!--/.footer-->
+  <!-- Social Links -->
+  <div class="col-md-4 footer-social">
+    <ul class="list-inline social-icons">
+      <li>
+        <a href="https://www.facebook.com/SAPConcur"
+           target="_blank">
+          <span class="sr-only">Facebook</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/5822"
+           target="_blank">
+          <span class="sr-only">LinkedIn</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/sapconcur"
+           target="_blank">
+          <span class="sr-only">Twitter</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/playlist?list=PLLNSVdjqNPVseaDkR5hSF4CDjnlLK7_nq"
+           target="_blank">
+          <span class="sr-only">Youtube</span>
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- End Social Links -->
 </footer>
+<!--/.footer-->
 
-  </div><!--/wrapper-->
+  </div>
+  <!--/wrapper-->
 
   <!-- JS Global Compulsory -->
 <script type="text/javascript" src="/assets/plugins/jquery/jquery.min.js"></script>
@@ -1748,7 +1690,7 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
 
 
 <script>
-  var replacementURL = "developer.concur.com/api-explorer-proxy";
+  var replacementURL = "preview.developer.concur.com/api-explorer-proxy";
 </script>
 
 
@@ -1763,6 +1705,50 @@ Clients can exchange OLD tokens for NEW Oauth2 tokens by calling the <code class
   });
 </script>
 
+<script>
+  var oHeader = document.getElementById("header-navbar");
+  var oContent = document.getElementById("main-content");
+  var oFooter = document.getElementById("footer");
+
+  // Set content overall height
+  var iNewHeight = oContent.offsetHeight - (oHeader.offsetHeight + oFooter.offsetHeight);
+  var sHeight = "" + iNewHeight + "px";
+  oContent.style.height = sHeight;
+
+  // Set Triple component heights.
+  // var oBreadcrumb = document.getElementById("breadcrumbs");
+  var oLeftNav = document.getElementById("left-navigation");
+  var oMDContent = document.getElementById("markdown-body");
+  var oMDToc = document.getElementById("markdown-toc");
+
+  // Widths are 2-8-2 or 2-10 if no MDToc
+  var sWidth;
+  if (!!oLeftNav) {
+    oLeftNav.style.height = sHeight;
+    sWidth = "" + (window.innerWidth * 0.166) + "px";
+    oLeftNav.style.maxWidth = sWidth;
+  }
+  if (!!oMDContent) {
+    oMDContent.style.height = sHeight;
+    if (!!oMDToc) {
+      // 8 / 12
+      sWidth = "" + (window.innerWidth *0.66) + "px";
+      oMDContent.style.maxWidth = sWidth;
+    } else {
+      // 10 / 12
+      oMDContent.style.maxWidth = window.innerWidth * 0.833;
+      sWidth = "" + (window.innerWidth * 0.833) + "px";
+      oMDContent.style.maxWidth = sWidth;
+    }
+  }
+  if (!!oMDToc) {
+    oMDToc.style.height = sHeight;
+    sWidth = "" + (window.innerWidth * 0.166) + "px";
+    oMDToc.style.maxWidth = sWidth;
+  }
+</script>
+
 
 </body>
+
 </html>
