@@ -3,10 +3,10 @@
   <channel>
     <title>SAP Concur Developer Center</title>
     <description>Concur docs provides comprehensive information on working with the Concur platform</description>
-    <link>https://developer.concur.com/</link>
-    <atom:link href="https://developer.concur.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 27 Aug 2021 13:52:22 +0100</pubDate>
-    <lastBuildDate>Fri, 27 Aug 2021 13:52:22 +0100</lastBuildDate>
+    <link>https://preview.developer.concur.com/</link>
+    <atom:link href="https://preview.developer.concur.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 27 Aug 2021 13:54:22 +0100</pubDate>
+    <lastBuildDate>Fri, 27 Aug 2021 13:54:22 +0100</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
   </channel>
